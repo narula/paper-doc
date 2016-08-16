@@ -1,10 +1,11 @@
 all: p.pdf
-	printf '\\gdef\\therev{%s}\n\\gdef\\thedate{%s}\n' `git rev-parse --short HEAD` "`git log -1 --format='%ci' HEAD`" > rev.tex
 
 .PHONY: FORCE
-p.pdf:  FORCE
+p.pdf:  header FORCE
 	scripts/latexrun p.tex
-#	scripts/latexrun -W no-all main.tex
+
+header: 
+	printf '\\gdef\\therev{%s}\n\\gdef\\thedate{%s}\n' `git rev-parse --short HEAD` "`git log -1 --format='%ci' HEAD`" > rev.tex
 
 abs: abstract.tex
 	cat $< | \
