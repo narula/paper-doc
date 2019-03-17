@@ -15,6 +15,21 @@
 \fi
 \makeatother
 
-\newcommand{\nn}[1]{\XXX[NN][{#1}]}
+%\newcommand{\nn}[1]{\XXX[NN][{#1}]}
 
 \newcommand{\sys}{SystemX\xspace}
+\newcommand{\xref}[1]{\S\ref{#1}}
+
+% other style of commenting macros
+\newif\ifnotes
+\notestrue
+%\notesfalse
+
+\ifnotes
+  \newcommand{\colornote}[3]{\textcolor{#1}{\smaller\sffamily\bfseries\boldmath[\ignorespaces #2 --- \smaller\textit{#3}]}}
+\else
+  \newcommand{\colornote}[3]{}
+\fi
+
+%\newcommand{\nn}[1]{\colornote{red}{#1}{NN}}
+
